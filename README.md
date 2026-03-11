@@ -1,72 +1,80 @@
-# Deploying a Node Js Application on AWS EC2
+# Secure Node.js Deployment on AWS EC2 🚀
 
-### Testing the project locally
+This project demonstrates the end-to-end deployment of a Node.js application (integrated with Stripe) on an AWS EC2 instance. Originally part of the **"DevOps Zero to Hero"** roadmap by Abhishek Veeramalla, this fork includes critical security patches and runtime bug fixes discovered during the deployment process.
 
-1. Clone this project
-```
-git clone https://github.com/verma-kunal/AWS-Session.git
-```
-2. Setup the following environment variables - `(.env)` file
-```
-DOMAIN= ""
+---
+
+## 🛠️ My Contributions & Improvements
+As a Cyber Security student, I focused on making this deployment stable and secure. My primary updates include:
+
+* **Security Patching**: Performed a full security audit and updated `nodemon` from `^2.0.16` to `^3.1.14` to resolve 3 high-severity vulnerabilities.
+* **Bug Fix (ReferenceError)**: Identified and resolved a runtime crash caused by a missing `path` module import in `server.js`.
+* **Path Optimization**: Standardized the `STATIC_DIR` configuration to ensure consistent file serving on Ubuntu/Linux environments.
+* **Documentation**: Enhanced the setup guide to include Stripe integration requirements.
+
+---
+
+## 🔒 Infrastructure & Security
+* **AWS Security Groups**: Configured inbound rules to strictly allow traffic only on Port 22 (SSH) and Port 3000 (Application).
+* **Secret Management**: Implemented `dotenv` to protect sensitive API keys (Stripe) from being exposed in version control.
+* **Dependency Auditing**: Utilized `npm audit` to verify a 100% vulnerability-free production environment.
+
+
+
+---
+
+## 📋 Prerequisites
+- An **AWS Account** (Free Tier is sufficient)
+- A **Stripe Account** for API keys
+- **Node.js** (v18 or higher) installed locally and on the server
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Environment Variables
+Create a `.env` file in the root directory and add the following:
+```env
+DOMAIN="http://<YOUR_AWS_ELASTIC_IP>:3000"
 PORT=3000
-STATIC_DIR="./client"
+STATIC_DIR="client"
 
-PUBLISHABLE_KEY=""
-SECRET_KEY=""
-```
-3. Initialise and start the project
-```
+# Stripe Keys
+STRIPE_SECRET_KEY="sk_test_..."
+PUBLISHABLE_KEY="pk_test_..."
+2. Deployment Steps (AWS EC2)
+Clone the project on your Ubuntu instance:
+
+Bash
+git clone [https://github.com/Akash-bhaumik/AWS-Session.git](https://github.com/Akash-bhaumik/AWS-Session.git)
+cd AWS-Session
+Install Dependencies:
+
+Bash
 npm install
+Start the Server:
+
+Bash
 npm run start
-```
+🛠️ Troubleshooting
+During this project, I documented the following common issues:
 
-### Set up an AWS EC2 instance
+ERR_INVALID_ARG_TYPE: Occurs if the .env file is not saved or the STATIC_DIR variable is missing.
 
-1. Create an IAM user & login to your AWS Console
-    - Access Type - Password
-    - Permissions - Admin
-2. Create an EC2 instance
-    - Select an OS image - Ubuntu
-    - Create a new key pair & download `.pem` file
-    - Instance type - t2.micro
-3. Connecting to the instance using ssh
-```
-ssh -i instance.pem ubunutu@<IP_ADDRESS>
-```
+ReferenceError: path is not defined: Fixed in this repo by importing the path module correctly for Linux directory resolution.
 
-### Configuring Ubuntu on remote VM
+🤝 Credits
+Original Project: verma-kunal/AWS-Session
 
-1. Updating the outdated packages and dependencies
-```
-sudo apt update
-```
-3. Install Git - [Guide by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-22-04) 
-4. Configure Node.js and `npm` - [Guide by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
+Tutorial Guidance: Abhishek Veeramalla's "DevOps Zero to Hero" series
 
-### Deploying the project on AWS
+Maintained by Akash Bhaumik Final Year B.Tech Student in Cyber Security @ IEM, Kolkata
 
-1. Clone this project in the remote VM
-```
-git clone https://github.com/verma-kunal/AWS-Session.git
-```
-2. Setup the following environment variables - `(.env)` file
-```
-DOMAIN= ""
-PORT=3000
-STATIC_DIR="./client"
 
-PUBLISHABLE_KEY=""
-SECRET_KEY=""
-```
-> For this project, we'll have to set up an [Elastic IP Address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) for our EC2 & that would be our `DOMAIN`
+---
 
-3. Initialise and start the project
-```
-npm install
-npm run start
-```
+### What to do next:
+1.  **Commit the README**: Run `git add README.md`, `git commit -m "docs: update README with security fixes and AWS guide"`, and `git push origin main`.
+2.  **LinkedIn Update**: Take a screenshot of the **"Improvements & Security Patches"** section of your new README. It makes a perfect visual for your "Learn in Public" post! 
 
-> NOTE - We will have to edit the **inbound rules** in the security group of our EC2, in order to allow traffic from our particular port
-
-### Project is deployed on AWS 🎉
+Would you like me to help you draft the LinkedIn post text now?
