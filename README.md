@@ -72,9 +72,3 @@ Maintained by Akash Bhaumik Final Year B.Tech Student in Cyber Security @ IEM, K
 
 
 ---
-
-### What to do next:
-1.  **Commit the README**: Run `git add README.md`, `git commit -m "docs: update README with security fixes and AWS guide"`, and `git push origin main`.
-2.  **LinkedIn Update**: Take a screenshot of the **"Improvements & Security Patches"** section of your new README. It makes a perfect visual for your "Learn in Public" post! 
-
-Would you like me to help you draft the LinkedIn post text now?
