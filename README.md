@@ -5,7 +5,7 @@ This project demonstrates the end-to-end deployment of a Node.js application (in
 ---
 
 ## 🛠️ My Contributions & Improvements
-As a Cyber Security student, I focused on making this deployment stable and secure. My primary updates include:
+I focused on making this deployment stable and secure. My primary updates include:
 
 * **Security Patching**: Performed a full security audit and updated `nodemon` from `^2.0.16` to `^3.1.14` to resolve 3 high-severity vulnerabilities.
 * **Bug Fix (ReferenceError)**: Identified and resolved a runtime crash caused by a missing `path` module import in `server.js`.
