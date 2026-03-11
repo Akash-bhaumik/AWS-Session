@@ -10,7 +10,7 @@
   "author": "Kunal Verma",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^3.1.14"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
